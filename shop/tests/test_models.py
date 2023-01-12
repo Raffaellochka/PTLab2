@@ -31,7 +31,7 @@ class PurchaseTestCase(TestCase):
         self.assertIsInstance(Purchase.objects.get(product=self.product_book).address, str)
         self.assertIsInstance(Purchase.objects.get(product=self.product_book).date, datetime)
         self.assertIsInstance(Purchase.objects.get(product=self.product_book).price, int)
-        
+
     def test_correctness_data(self):
         self.assertTrue(Purchase.objects.get(product=self.product_book).person == "Ivanov")
         self.assertTrue(Purchase.objects.get(product=self.product_book).address == "Svetlaya St.")
