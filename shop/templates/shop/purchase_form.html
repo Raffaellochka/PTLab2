@@ -10,6 +10,7 @@
         <form method="post">{% csrf_token %}
             <input type="hidden" value="{{ view.kwargs.product_id }}" name="product" />
             <table>
+                <input type="hidden" value="0" name="price" />
                 <tr>
                     <td><p>Введите свое имя </p></td>
                     <td><input type="text" name="person" /> </td>
@@ -19,6 +20,10 @@
                     <td>
                         <input type="text" name="address" />
                     </td>
+                </tr>
+                <tr>
+                    <td><p>Введите свою дату рождения </p></td>
+                    <td><input type="date" name="birthday" /> </td>
                 </tr>
                 <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
             </table>
