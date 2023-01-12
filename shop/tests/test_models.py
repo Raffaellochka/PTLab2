@@ -24,15 +24,17 @@ class PurchaseTestCase(TestCase):
         self.datetime = datetime.now()
         Purchase.objects.create(product=self.product_book,
                                 person="Ivanov",
-                                address="Svetlaya St.")
+                                address="Svetlaya St.", birthday="2023-01-12", price="480")
 
     def test_correctness_types(self):
         self.assertIsInstance(Purchase.objects.get(product=self.product_book).person, str)
         self.assertIsInstance(Purchase.objects.get(product=self.product_book).address, str)
         self.assertIsInstance(Purchase.objects.get(product=self.product_book).date, datetime)
-
+        self.assertIsInstance(Purchase.objects.get(product=self.product_book).price, int)
+        
     def test_correctness_data(self):
         self.assertTrue(Purchase.objects.get(product=self.product_book).person == "Ivanov")
         self.assertTrue(Purchase.objects.get(product=self.product_book).address == "Svetlaya St.")
         self.assertTrue(Purchase.objects.get(product=self.product_book).date.replace(microsecond=0) == \
             self.datetime.replace(microsecond=0))
+        self.assertTrue(Purchase.objects.get(product=self.product_book).price == 480)
